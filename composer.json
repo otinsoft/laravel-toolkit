@@ -1,0 +1,30 @@
+{
+    "name": "otinsoft/toolkit",
+    "description": "Common utilities for Laravel-Vue projects.",
+    "homepage": "https://github.com/otinsoft/toolkit",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cretu Eusebiu",
+            "email": "me@cretueusebiu.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "illuminate/support": "^5.3"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Otinsoft\\Toolkit\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Otinsoft\\Toolkit\\Tests\\": "tests"
+        }
+    }
+}
