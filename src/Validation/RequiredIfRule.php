@@ -1,11 +1,22 @@
 <?php
 
-namespace App\Validation;
+namespace Otinsoft\Toolkit\Validation;
+
+use Illuminate\Validation\Rule;
 
 class RequiredIfRule
 {
     /**
+     * The name of the macro.
+     *
+     * @var string
+     */
+    const MACRO_NAME = 'requiredIf';
+
+    /**
      * The name of the rule.
+     *
+     * @var string
      */
     protected $rule = 'required_if';
 
@@ -34,6 +45,18 @@ class RequiredIfRule
     {
         $this->otherfield = $otherfield;
         $this->values = (array) $values;
+    }
+
+    /**
+     * Register the rule mcro.
+     *
+     * @return void
+     */
+    public static function registerMacro()
+    {
+        Rule::macro(self::MACRO_NAME, function ($otherfield, $values) {
+            return new static($otherfield, $values);
+        });
     }
 
     /**

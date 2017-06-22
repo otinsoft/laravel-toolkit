@@ -14,7 +14,7 @@ trait HasRole
      */
     public function role(): BelongsTo
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(config('toolkit.models.role'));
     }
 
     /**
