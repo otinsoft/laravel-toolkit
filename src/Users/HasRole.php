@@ -27,7 +27,7 @@ trait HasRole
     {
         if (is_string($role)) {
             $role = Role::findByName($role);
-        } else if (is_numeric($role)) {
+        } elseif (is_numeric($role)) {
             $role = Role::findOrFail($role);
         }
 
@@ -47,7 +47,7 @@ trait HasRole
     {
         if ($role instanceof Role) {
             $role = $role->name;
-        } else if (is_numeric($role)) {
+        } elseif (is_numeric($role)) {
             $role = Role::findOrFail($role)->name;
         }
 
@@ -82,7 +82,7 @@ trait HasRole
     {
         if (is_string($role)) {
             $role = Role::findByName($role);
-        } else if (is_numeric($role)) {
+        } elseif (is_numeric($role)) {
             $role = Role::findOrFail($role);
         }
 

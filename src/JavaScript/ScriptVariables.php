@@ -62,7 +62,7 @@ class ScriptVariables
         }
 
         $variables = array_filter(static::$variables, function ($variable) {
-            return !$variable instanceof Closure;
+            return ! $variable instanceof Closure;
         });
 
         return new HtmlString(

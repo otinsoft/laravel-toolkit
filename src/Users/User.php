@@ -2,7 +2,6 @@
 
 namespace Otinsoft\Toolkit\Users;
 
-use Illuminate\Support\Str;
 // use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Otinsoft\Toolkit\Database\Concerns\DeleteOrFail;

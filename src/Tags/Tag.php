@@ -3,7 +3,6 @@
 namespace Otinsoft\Toolkit\Tags;
 
 use Otinsoft\Toolkit\Database\Model;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Tag extends Model
 {
@@ -63,7 +62,7 @@ class Tag extends Model
         if (! $tag = static::findFromString($name)) {
             $tag = static::create([
                 'name' => $name,
-                'user_id' => static::$user->id ?? null
+                'user_id' => static::$user->id ?? null,
             ]);
         }
 
