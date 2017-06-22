@@ -2,7 +2,7 @@
 
 namespace Otinsoft\Toolkit\Users;
 
-trait HasRole
+trait HasJWT
 {
     /**
      * @return int

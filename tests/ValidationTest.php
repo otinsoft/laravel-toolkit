@@ -2,7 +2,6 @@
 
 namespace Otinsoft\Toolkit\Tests;
 
-use Illuminate\Hashing\BcryptHasher;
 use Otinsoft\Toolkit\Validation\HashValidator;
 use Otinsoft\Toolkit\Validation\RequiredIfRule;
 use Otinsoft\Toolkit\Validation\ReCaptchaValidator;
