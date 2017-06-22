@@ -1,7 +1,7 @@
 {
-    "name": "otinsoft/toolkit",
-    "description": "Common utilities for Laravel-Vue projects.",
-    "homepage": "https://github.com/otinsoft/toolkit",
+    "name": "otinsoft/laravel-toolkit",
+    "description": "Common utilities for Laravel projects.",
+    "homepage": "https://github.com/otinsoft/laravel-toolkit",
     "license": "MIT",
     "authors": [
         {
@@ -10,12 +10,12 @@
         }
     ],
     "require": {
-        "php": ">=5.6.4",
-        "illuminate/support": "^5.3"
+        "php": "^7.0"
     },
     "require-dev": {
-        "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.7"
+        "mockery/mockery": "^0.9.9",
+        "phpunit/phpunit": "~5.7",
+        "orchestra/testbench": "^3.4"
     },
     "autoload": {
         "psr-4": {

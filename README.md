@@ -1,14 +1,34 @@
-<h1>Laravel-Vue Toolkit</h1>
+<h1>Laravel Toolkit</h1>
 
-<a href="https://packagist.org/packages/otinsoft/toolkit"><img src="https://poser.pugx.org/otinsoft/toolkit/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://travis-ci.org/otinsoft/toolkit"><img src="https://travis-ci.org/otinsoft/toolkit.svg?branch=master" alt="Build Status"></a>
+<a href="https://packagist.org/packages/otinsoft/laravel-toolkit"><img src="https://poser.pugx.org/otinsoft/laravel-toolkit/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://travis-ci.org/otinsoft/laravel-toolkit"><img src="https://travis-ci.org/otinsoft/laravel-toolkit.svg?branch=master" alt="Build Status"></a>
 
 ## Installation
 
-Install the package via Composer:
+You can install the package via composer:
 
 ```bash
-composer require otinsoft/toolkit
+composer require otinsoft/laravel-toolkit
 ```
 
-## Configuration
+Install the service provider:
+
+```php
+// config/app.php
+'providers' => [
+    ...
+    Otinsoft\Toolkit\ToolkitServiceProvider::class,
+],
+```
+
+_(Optional)_ Publish the migrations with:
+
+```bash
+php artisan vendor:publish --provider="Otinsoft\Toolkit\ToolkitServiceProvider" --tag="migrations"
+```
+
+_(Optional)_ Publish the config file with:
+
+```bash
+php artisan vendor:publish --provider="Otinsoft\Toolkit\ToolkitServiceProvider" --tag="config"
+```

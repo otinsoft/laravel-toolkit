@@ -2,9 +2,10 @@
 
 namespace Otinsoft\Toolkit\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Otinsoft\Toolkit\JavaScript\ScriptVariables;
 
-class ScriptVariablesTest extends \PHPUnit_Framework_TestCase
+class ScriptVariablesTest extends TestCase
 {
     protected function setUp()
     {
@@ -13,14 +14,16 @@ class ScriptVariablesTest extends \PHPUnit_Framework_TestCase
         ScriptVariables::clear();
     }
 
-    public function testAddKeyValueVariable()
+    /** @test */
+    public function add_basic_variable()
     {
         ScriptVariables::add('foo', 'bar');
 
         $this->assertEquals('<script>window.config = {"foo":"bar"};</script>', ScriptVariables::render());
     }
 
-    public function testAddArrayVariable()
+    /** @test */
+    public function add_array_variable()
     {
         ScriptVariables::add([
             'key1' => 'foo',
@@ -30,7 +33,8 @@ class ScriptVariablesTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('<script>window.config = {"key1":"foo","key2":"bar"};</script>', ScriptVariables::render());
     }
 
-    public function testAddNestedArrayVariable()
+    /** @test */
+    public function add_nested_array_variable()
     {
         $sv = ScriptVariables::add([
             'data.user' => 'foo',
@@ -39,7 +43,8 @@ class ScriptVariablesTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('<script>window.config = {"data":{"user":"foo"}};</script>', ScriptVariables::render());
     }
 
-    public function testAddVariableViaClosure()
+    /** @test */
+    public function add_variable_via_closure()
     {
         ScriptVariables::add(function () {
             return [
@@ -50,12 +55,14 @@ class ScriptVariablesTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('<script>window.config = {"data":{"user":"foo"}};</script>', ScriptVariables::render());
     }
 
-    public function testSetNamespace()
+    /** @test */
+    public function set_namespace()
     {
         $this->assertEquals('<script>window.custom = [];</script>', ScriptVariables::render('custom'));
     }
 
-    public function testClearVariables()
+    /** @test */
+    public function clear_variables()
     {
         ScriptVariables::add('foo', 'bar');
 
