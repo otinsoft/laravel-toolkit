@@ -17,7 +17,7 @@ trait Taggable
      *
      * @return void
      */
-    public static function bootHasTags()
+    public static function bootTaggable()
     {
         static::created(function ($taggable) {
             $taggable->attachTags($taggable->queuedTags);
@@ -33,13 +33,13 @@ trait Taggable
      */
     public function tags(): MorphToMany
     {
-        return $this->morphToMany(Tag::class, 'taggable');
+        return $this->morphToMany(config('toolkit.models.tag'), 'taggable');
     }
 
     /**
      * Set the tags attribute.
      *
-     * @param \App\Tags\Tag|string|array $tags
+     * @param \Otinsoft\Toolkit\Tags\Tag|string|array $tags
      * @return void
      */
     public function setTagsAttribute($tags)
@@ -122,7 +122,7 @@ trait Taggable
     /**
      * Attach a single tag.
      *
-     * @param  \App\Tags\Tag|string $tag
+     * @param  \Otinsoft\Toolkit\Tags\Tag|string $tag
      * @return $this
      */
     public function attachTag($tag)
@@ -142,7 +142,7 @@ trait Taggable
 
         collect($tags)
             ->filter()
-            ->each(function (Tag $tag) {
+            ->each(function ($tag) {
                 $this->tags()->detach($tag);
             });
 
@@ -152,7 +152,7 @@ trait Taggable
     /**
      * Detach a single tag.
      *
-     * @param  \App\Tags\Tag|string $tag
+     * @param  \Otinsoft\Toolkit\Tags\Tag|string $tag
      * @return $this
      */
     public function detachTag($tag)

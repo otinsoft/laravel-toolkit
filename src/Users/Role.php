@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Users;
+namespace Otinsoft\Toolkit\Users;
 
 use Otinsoft\Toolkit\Database\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;

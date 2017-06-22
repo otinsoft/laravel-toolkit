@@ -1,12 +1,17 @@
 <?php
 
-namespace App\Validation;
+namespace Otinsoft\Toolkit\Validation;
 
 use ReCaptcha\ReCaptcha;
 
 class ReCaptchaValidator
 {
-    const NAME = 'hash';
+    /**
+     * The name of the validator.
+     *
+     * @var string
+     */
+    const NAME = 'recaptcha';
 
     /**
      * Validate that an attribute is a valid hash.

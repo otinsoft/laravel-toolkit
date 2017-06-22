@@ -1,11 +1,16 @@
 <?php
 
-namespace App\Validation;
+namespace Otinsoft\Toolkit\Validation;
 
 use Illuminate\Support\Facades\Hash;
 
 class HashValidator
 {
+    /**
+     * The name of the validator.
+     *
+     * @var string
+     */
     const NAME = 'hash';
 
     /**

@@ -26,7 +26,7 @@ class Tag extends Model
      * Find or create tag(s).
      *
      * @param  \Illuminate\Database\Eloquent\Collection|array $values
-     * @return \App\Tags\Tag|\Illuminate\Support\Collection
+     * @return \Otinsoft\Toolkit\Tags\Tag|\Illuminate\Support\Collection
      */
     public static function findOrCreate($values)
     {
@@ -45,7 +45,7 @@ class Tag extends Model
      * Find a tag by it's name.
      *
      * @param  string $name
-     * @return \App\Tags\Tag|null
+     * @return \Otinsoft\Toolkit\Tags\Tag|null
      */
     public static function findFromString(string $name)
     {
@@ -56,7 +56,7 @@ class Tag extends Model
      * Find or create a new tag.
      *
      * @param  string $name
-     * @return \App\Tags\Tag
+     * @return \Otinsoft\Toolkit\Tags\Tag
      */
     protected static function findOrCreateFromString(string $name)
     {
@@ -73,7 +73,7 @@ class Tag extends Model
     /**
      * Create tags with the given user.
      *
-     * @param  \App\Users\User $user
+     * @param  \Illuminate\Contracts\Auth\Authenticatable $user
      * @param  callable $callback
      * @return void
      */
