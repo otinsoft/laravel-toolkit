@@ -4,7 +4,6 @@ namespace Otinsoft\Toolkit\Users;
 
 use Illuminate\Support\Str;
 // use Tymon\JWTAuth\Contracts\JWTSubject;
-// use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Otinsoft\Toolkit\Database\Concerns\DeleteOrFail;
 use Otinsoft\Toolkit\Database\Concerns\SerializeDate;
@@ -41,15 +40,6 @@ class User extends Authenticatable //implements JWTSubject
     ];
 
     /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    // protected $appends = [
-    //     'photo_url'
-    // ];
-
-    /**
      * The attributes that should be mutated to dates.
      *
      * @var array
@@ -66,28 +56,6 @@ class User extends Authenticatable //implements JWTSubject
     protected $casts = [
         'id' => 'integer',
     ];
-
-    /**
-     * Get the photo url attribute.
-     *
-     * @return string
-     */
-    public function getPhotoUrlAttribute(): string
-    {
-        if (Str::startsWith($this->photo, 'http')) {
-            return $this->photo;
-        }
-
-        if (! empty($this->photo)) {
-            return Storage::disk('photos')->url($this->photo);
-        }
-
-        return asset('img/default-photo.png');
-
-        // $id = md5(strtolower(trim($this->email)));
-
-        // return "https://www.gravatar.com/avatar/{$id}/?d=identicon&s=300&r=g";
-    }
 
     /**
      * Update the last login timestamp.
