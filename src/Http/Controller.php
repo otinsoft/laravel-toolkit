@@ -1,6 +1,6 @@
 <?php
 
-namespace Otinsoft\Toolkit\Http\Controllers;
+namespace Otinsoft\Toolkit\Http;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
