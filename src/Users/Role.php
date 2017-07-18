@@ -33,7 +33,7 @@ class Role extends Model
      */
     public function users(): HasMany
     {
-        return $this->hasMany(config('app.auth.providers.users.model'));
+        return $this->hasMany(config('auth.providers.users.model'));
     }
 
     /**
