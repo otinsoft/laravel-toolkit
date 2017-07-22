@@ -24,7 +24,7 @@ class Polyfill
      * @param  array $features
      * @return void
      */
-    public function set(array $features)
+    public static function set(array $features)
     {
         static::$features = $features;
     }
@@ -49,7 +49,7 @@ class Polyfill
      * @param  string|array $features
      * @return void
      */
-    public function remove($features)
+    public static function remove($features)
     {
         foreach ((array) $features as $feature) {
             unset(static::$features[$feature]);
@@ -61,7 +61,7 @@ class Polyfill
      *
      * @return \Illuminate\Support\HtmlString
      */
-    public function render(): HtmlString
+    public static function render(): HtmlString
     {
         return new HtmlString(
             '<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features='.implode(',', static::$features).'"></script>'
