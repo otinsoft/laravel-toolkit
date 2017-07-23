@@ -20,7 +20,7 @@ trait UpdatesPassword
             'current_password' => 'required|hash:'.$request->user()->password,
         ]);
 
-        $request->user()->update([
+        return tap($request->user())->update([
             'password' => Hash::make($request->password),
         ]);
     }

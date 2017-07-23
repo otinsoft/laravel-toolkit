@@ -26,9 +26,7 @@ trait UpdatesPhoto
             $this->disk()->delete($oldPhoto);
         }
 
-        return tap($request->user(), function ($user) use ($photo) {
-            $user->update(compact('photo'));
-        });
+        return tap($request->user())->update(compact('photo'));
     }
 
     /**
@@ -58,7 +56,7 @@ trait UpdatesPhoto
             $this->disk()->delete($photo);
         }
 
-        $request->user()->update(['photo' => null]);
+        return tap($request->user())->update(['photo' => null]);
     }
 
     /**
