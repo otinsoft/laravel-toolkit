@@ -40,7 +40,7 @@ trait UpdatesPhoto
         $size = config('toolkit.photo_max_filesize');
 
         $this->validate($request, [
-            'photo' => "required|max:$size|mimes:jpeg,png,gif"
+            'photo' => "required|max:$size|mimes:jpeg,png,gif",
         ]);
     }
 

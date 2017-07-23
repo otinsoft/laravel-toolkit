@@ -21,7 +21,7 @@ trait UpdatesPassword
         ]);
 
         $request->user()->update([
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
         ]);
     }
 }
