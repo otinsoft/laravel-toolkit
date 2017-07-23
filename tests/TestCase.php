@@ -10,12 +10,16 @@ class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('database.default', 'testing');
-
         $app['config']->set('database.connections.testing', [
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
+        ]);
+
+        $app['config']->set('filesystems.disks.photos', [
+            'driver' => 'local',
+            'visibility' => 'public',
+            'root' => __DIR__.'/temp/photos',
         ]);
     }
 
