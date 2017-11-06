@@ -2,7 +2,6 @@
 
 namespace Otinsoft\Toolkit\Files;
 
-use Otinsoft\Toolkit\Files\File;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 

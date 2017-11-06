@@ -19,7 +19,7 @@ class FileState
             self::PROGRESSING,
             self::COMPLETED,
             self::WARNING,
-            self::ERROR
+            self::ERROR,
         ];
     }
 }
