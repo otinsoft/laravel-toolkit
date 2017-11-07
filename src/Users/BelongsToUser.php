@@ -13,6 +13,6 @@ trait BelongsToUser
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(config('app.auth.providers.users.model'));
+        return $this->belongsTo(config('auth.providers.users.model'));
     }
 }
