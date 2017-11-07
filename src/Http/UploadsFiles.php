@@ -5,7 +5,7 @@ namespace Otinsoft\Toolkit\Http;
 use Illuminate\Http\Request;
 use Otinsoft\Toolkit\Files\File;
 
-class FileController extends Controller
+trait UploadsFiles
 {
     /**
      * Store a newly created resource in storage.
@@ -19,7 +19,7 @@ class FileController extends Controller
 
         $this->authorize('create', File::class);
 
-        $path = $request->file->store('images', $this->disk());
+        $path = $request->file->store($this->path(), $this->disk());
 
         return File::create([
             'path' => $path,
@@ -51,12 +51,17 @@ class FileController extends Controller
 
     protected function validateStore(Request $request)
     {
-        $maxSize = config('cfr.file_max_size');
+        $maxSize = config('toolkit.file_max_size');
 
         $this->validate($request, [
             'file' => "required|max:$maxSize|mimes:jpeg,png,gif,svg",
             'uuid' => 'nullable|unique:files',
         ]);
+    }
+
+    protected function path(): string
+    {
+        return 'uploads';
     }
 
     protected function disk(): string

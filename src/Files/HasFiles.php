@@ -2,25 +2,39 @@
 
 namespace Otinsoft\Toolkit\Files;
 
-use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-
 trait HasFiles
 {
-    public function morphOneFile(string $collectionName = 'default'): MorphOne
+    /**
+     * Define a polymorphic one-to-one relationship.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model $model
+     * @param  string $collectionName
+     * @return static
+     */
+    public function morphOneFile(string $collectionName = 'default')
     {
-        return $this->morphOne(config('toolkit.models.file'), 'fileable')
-                    ->where('collection_name', $collectionName);
+        return MorphOne::fromModel($this, $collectionName);
     }
 
-    public function morphManyFiles(string $collectionName = 'default'): MorphMany
+    /**
+     * Define a polymorphic one-to-many relationship.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model $model
+     * @param  string $collectionName
+     * @return static
+     */
+    public function morphManyFiles(string $collectionName = 'default')
     {
-        return $this->morphMany(config('toolkit.models.file'), 'fileable')
-                    ->where('collection_name', $collectionName);
+        return MorphMany::fromModel($this, $collectionName);
     }
 
-    public function files(string $collectionName = 'default'): MorphMany
+    /**
+     * Get all of the model's files.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function files()
     {
-        return $this->morphManyFiles($collectionName);
+        return $this->morphMany(config('toolkit.models.file'), 'model');
     }
 }

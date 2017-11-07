@@ -13,14 +13,14 @@ class ClearCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'toolkit-files:clear';
+    protected $signature = 'toolkit:clear-files';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Delete all files older than a day without an entity.';
+    protected $description = 'Delete all files older than a day without a model.';
 
     /**
      * Execute the console command.
@@ -30,11 +30,11 @@ class ClearCommand extends Command
     public function handle()
     {
         File::where('created_at', '<', Carbon::now()->subDay())
-            // ->whereNull('fileable')
+            ->whereNull('model_id')
             ->chunk(100, function ($files) {
                 $files->each(function ($file) {
                     rescue(function () use ($file) {
-                        // $file->delete();
+                        $file->delete();
                     });
                 });
             });

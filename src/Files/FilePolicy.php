@@ -2,7 +2,7 @@
 
 namespace Otinsoft\Toolkit\Files;
 
-use Otinsoft\Toolkit\Users\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class FilePolicy
@@ -12,11 +12,11 @@ class FilePolicy
     /**
      * Determine whether the user can view the file.
      *
-     * @param  \Otinsoft\Toolkit\Users\User $user
+     * @param  \Illuminate\Database\Eloquent\Model $user
      * @param  \Otinsoft\Toolkit\Files\File $file
      * @return mixed
      */
-    public function view(User $user, File $file)
+    public function view(Model $user, File $file)
     {
         return $file->user->is($user);
     }
@@ -24,10 +24,10 @@ class FilePolicy
     /**
      * Determine whether the user can create files.
      *
-     * @param  \Otinsoft\Toolkit\Users\User $user
+     * @param  \Illuminate\Database\Eloquent\Model $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(Model $user)
     {
         return false;
     }
@@ -35,11 +35,11 @@ class FilePolicy
     /**
      * Determine whether the user can update the file.
      *
-     * @param  \Otinsoft\Toolkit\Users\User $user
+     * @param  \Illuminate\Database\Eloquent\Model $user
      * @param  \Otinsoft\Toolkit\Files\File $file
      * @return mixed
      */
-    public function update(User $user, File $file)
+    public function update(Model $user, File $file)
     {
         return $file->user->is($user);
     }
@@ -47,11 +47,11 @@ class FilePolicy
     /**
      * Determine whether the user can delete the file.
      *
-     * @param  \Otinsoft\Toolkit\Users\User $user
+     * @param  \Illuminate\Database\Eloquent\Model $user
      * @param  \Otinsoft\Toolkit\Files\File $file
      * @return mixed
      */
-    public function delete(User $user, File $file)
+    public function delete(Model $user, File $file)
     {
         return $file->user->is($user);
     }
