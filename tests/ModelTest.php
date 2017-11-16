@@ -2,14 +2,13 @@
 
 namespace Otinsoft\Toolkit\Tests;
 
-use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;
 use Otinsoft\Toolkit\Database\Model;
 
 class ModelTest extends TestCase
 {
     /** @test */
-    public function makes_attributes_mass_assignable()
+    function make_attributes_mass_assignable()
     {
         $model = new DummyModel(['name' => 'Foo']);
 
@@ -17,9 +16,9 @@ class ModelTest extends TestCase
     }
 
     /** @test */
-    public function serialize_date_to_iso_8601_string()
+    function serialize_date_to_iso_8601_string()
     {
-        $model = new DummyModel(['created_at' => $date = Carbon::now()]);
+        $model = new DummyModel(['created_at' => $date = now()]);
 
         $this->assertEquals($date->toIso8601String(), $model->toArray()['created_at']);
     }

@@ -9,7 +9,7 @@ use Otinsoft\Toolkit\Validation\ReCaptchaValidator;
 class ValidationTest extends TestCase
 {
     /** @test */
-    public function required_if_rule()
+    function required_if_rule()
     {
         $rule = new RequiredIfRule('otherfield', ['foo', 'bar']);
 
@@ -17,7 +17,7 @@ class ValidationTest extends TestCase
     }
 
     /** @test */
-    public function hash_validator()
+    function hash_validator()
     {
         $v = new HashValidator;
 
@@ -27,7 +27,7 @@ class ValidationTest extends TestCase
     }
 
     /** @test */
-    public function recaptcha_validator()
+    function recaptcha_validator()
     {
         $v = new ReCaptchaValidator;
 

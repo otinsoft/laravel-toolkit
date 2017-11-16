@@ -74,6 +74,12 @@ class ToolkitServiceProvider extends ServiceProvider
                 __DIR__.'/../migrations/create_roles_table.php.stub' => database_path("/migrations/{$timestamp}_create_roles_table.php"),
             ], 'migrations');
         }
+
+        if (! class_exists('CreateVerificationTokensTable')) {
+            $this->publishes([
+                __DIR__.'/../migrations/create_verification_tokens_table.php.stub' => database_path("/migrations/{$timestamp}_create_verification_tokens_table.php"),
+            ], 'migrations');
+        }
     }
 
     /**
