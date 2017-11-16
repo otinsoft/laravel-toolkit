@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Otinsoft\Toolkit\Database\Concerns\DeleteOrFail;
 use Otinsoft\Toolkit\Database\Concerns\SerializeDate;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 // use Tymon\JWTAuth\Contracts\JWTSubject;
 // use Otinsoft\Toolkit\Auth\HasVerification;
 

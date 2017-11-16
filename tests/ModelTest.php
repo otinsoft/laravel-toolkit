@@ -8,7 +8,7 @@ use Otinsoft\Toolkit\Database\Model;
 class ModelTest extends TestCase
 {
     /** @test */
-    function make_attributes_mass_assignable()
+    public function make_attributes_mass_assignable()
     {
         $model = new DummyModel(['name' => 'Foo']);
 
@@ -16,7 +16,7 @@ class ModelTest extends TestCase
     }
 
     /** @test */
-    function serialize_date_to_iso_8601_string()
+    public function serialize_date_to_iso_8601_string()
     {
         $model = new DummyModel(['created_at' => $date = now()]);
 

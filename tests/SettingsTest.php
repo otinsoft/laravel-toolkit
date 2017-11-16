@@ -31,7 +31,7 @@ class SettingsTest extends TestCase
     }
 
     /** @test */
-    function can_update_user_photo()
+    public function can_update_user_photo()
     {
         $photo = new UploadedFile(__DIR__.'/stubs/photo.png', 'photo.png', 'image/png', 1665, null, true);
 
@@ -50,7 +50,7 @@ class SettingsTest extends TestCase
     }
 
     /** @test */
-    function can_delete_user_photo()
+    public function can_delete_user_photo()
     {
         $this->user->update(['photo' => 'photo.png']);
 
@@ -65,7 +65,7 @@ class SettingsTest extends TestCase
     }
 
     /** @test */
-    function can_update_password()
+    public function can_update_password()
     {
         $this->actingAs($this->user)
             ->postJson('/password', [
