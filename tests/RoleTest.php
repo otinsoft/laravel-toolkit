@@ -3,8 +3,6 @@
 namespace Otinsoft\Toolkit\Tests;
 
 use Otinsoft\Toolkit\Users\Role;
-use Otinsoft\Toolkit\Users\HasRole;
-use Otinsoft\Toolkit\Users\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class RoleTest extends TestCase
@@ -28,7 +26,7 @@ class RoleTest extends TestCase
     }
 
     /** @test */
-    function assign_a_role_by_id()
+    public function assign_a_role_by_id()
     {
         $role = factory(Role::class)->create();
 
@@ -43,7 +41,7 @@ class RoleTest extends TestCase
     }
 
     /** @test */
-    function determine_if_user_has_role()
+    public function determine_if_user_has_role()
     {
         $role = factory(Role::class)->create();
         $this->user = factory(User::class)->create();
@@ -66,7 +64,7 @@ class RoleTest extends TestCase
     }
 
     /** @test */
-    function determine_if_the_user_has_any_role()
+    public function determine_if_the_user_has_any_role()
     {
         [$role1, $role2] = factory(Role::class, 2)->create();
         $this->user = factory(User::class)->create();
@@ -77,7 +75,7 @@ class RoleTest extends TestCase
     }
 
     /** @test */
-    function assign_role()
+    public function assign_role()
     {
         $this->user = factory(User::class)->create();
 
@@ -95,7 +93,7 @@ class RoleTest extends TestCase
     }
 
     /** @test */
-    function query_users_with_a_cenrtain_role()
+    public function query_users_with_a_cenrtain_role()
     {
         $role = factory(Role::class)->create();
 

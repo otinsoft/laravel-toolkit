@@ -4,10 +4,10 @@ namespace Otinsoft\Toolkit\Tests;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Otinsoft\Toolkit\Http\Controller;
 use Illuminate\Support\Facades\Route;
-use Otinsoft\Toolkit\Auth\EmailVerification;
+use Otinsoft\Toolkit\Http\Controller;
 use Illuminate\Support\Facades\Notification;
+use Otinsoft\Toolkit\Auth\EmailVerification;
 use Otinsoft\Toolkit\Auth\VerificationRepository;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Otinsoft\Toolkit\Notifications\Verification as VerificationNotification;
@@ -31,14 +31,14 @@ class EmailVerificationTest extends TestCase
     }
 
     /** @test */
-    function email_must_be_valid()
+    public function email_must_be_valid()
     {
         $this->postJson('/verification/email', ['email' => 'invalid'])
             ->assertStatus(422);
     }
 
     /** @test */
-    function a_user_with_the_given_email_must_exist()
+    public function a_user_with_the_given_email_must_exist()
     {
         $this->postJson('/verification/email', ['email' => 'test@example.com'])
             ->assertStatus(422)
@@ -46,7 +46,7 @@ class EmailVerificationTest extends TestCase
     }
 
     /** @test */
-    function can_not_verify_if_already_verified()
+    public function can_not_verify_if_already_verified()
     {
         $user = factory(User::class)->create();
 
@@ -56,7 +56,7 @@ class EmailVerificationTest extends TestCase
     }
 
     /** @test */
-    function creates_token_and_sends_notification()
+    public function creates_token_and_sends_notification()
     {
         Notification::fake();
 
@@ -78,7 +78,7 @@ class EmailVerificationTest extends TestCase
     }
 
     /** @test */
-    function deletes_previous_tokens_if_a_new_one_is_created()
+    public function deletes_previous_tokens_if_a_new_one_is_created()
     {
         Notification::fake();
 
@@ -91,7 +91,7 @@ class EmailVerificationTest extends TestCase
     }
 
     /** @test */
-    function can_verify_user()
+    public function can_verify_user()
     {
         Notification::fake();
 
@@ -109,7 +109,7 @@ class EmailVerificationTest extends TestCase
     }
 
     /** @test */
-    function can_not_verify_invalid_token()
+    public function can_not_verify_invalid_token()
     {
         $this->postJson('/verification/invalid-token')
             ->assertStatus(400)

@@ -15,7 +15,7 @@ class ScriptVariablesTest extends TestCase
     }
 
     /** @test */
-    function add_basic_variable()
+    public function add_basic_variable()
     {
         ScriptVariables::add('foo', 'bar');
 
@@ -23,7 +23,7 @@ class ScriptVariablesTest extends TestCase
     }
 
     /** @test */
-    function add_array_variable()
+    public function add_array_variable()
     {
         ScriptVariables::add([
             'key1' => 'foo',
@@ -34,7 +34,7 @@ class ScriptVariablesTest extends TestCase
     }
 
     /** @test */
-    function add_nested_array_variable()
+    public function add_nested_array_variable()
     {
         $sv = ScriptVariables::add([
             'data.user' => 'foo',
@@ -44,7 +44,7 @@ class ScriptVariablesTest extends TestCase
     }
 
     /** @test */
-    function add_variable_via_closure()
+    public function add_variable_via_closure()
     {
         ScriptVariables::add(function () {
             return [
@@ -56,13 +56,13 @@ class ScriptVariablesTest extends TestCase
     }
 
     /** @test */
-    function set_namespace()
+    public function set_namespace()
     {
         $this->assertEquals('<script>window.custom = [];</script>', ScriptVariables::render('custom'));
     }
 
     /** @test */
-    function clear_variables()
+    public function clear_variables()
     {
         ScriptVariables::add('foo', 'bar');
 

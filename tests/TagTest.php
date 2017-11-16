@@ -28,7 +28,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function can_create_a_tag()
+    public function can_create_a_tag()
     {
         $tag = Tag::findOrCreateFromString('string');
 
@@ -37,7 +37,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function will_not_create_a_tag_if_the_tag_already_exists()
+    public function will_not_create_a_tag_if_the_tag_already_exists()
     {
         Tag::findOrCreate('string');
         Tag::findOrCreate('string');
@@ -46,7 +46,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function can_create_tags_using_an_array()
+    public function can_create_tags_using_an_array()
     {
         Tag::findOrCreate(['tag1', 'tag2', 'tag3']);
 
@@ -54,7 +54,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function can_create_tags_using_a_collection()
+    public function can_create_tags_using_a_collection()
     {
         Tag::findOrCreate(collect(['tag1', 'tag2', 'tag3']));
 
@@ -62,7 +62,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function name_can_be_changed_by_setting_its_name_property_to_a_new_value()
+    public function name_can_be_changed_by_setting_its_name_property_to_a_new_value()
     {
         $tag = Tag::findOrCreate('my tag');
         $tag->name = 'new name';
@@ -72,13 +72,13 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function it_provides_a_tags_relation()
+    public function it_provides_a_tags_relation()
     {
         $this->assertInstanceOf(MorphToMany::class, $this->testModel->tags());
     }
 
     /** @test */
-    function can_attach_a_tag()
+    public function can_attach_a_tag()
     {
         $this->testModel->attachTag('tagName');
 
@@ -88,7 +88,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function can_attach_a_tag_multiple_times_without_creating_duplicate_entries()
+    public function can_attach_a_tag_multiple_times_without_creating_duplicate_entries()
     {
         $this->testModel->attachTag('tagName');
         $this->testModel->attachTag('tagName');
@@ -97,7 +97,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function can_use_a_tag_model_when_attaching_a_tag()
+    public function can_use_a_tag_model_when_attaching_a_tag()
     {
         $tag = Tag::findOrCreate('tagName');
 
@@ -107,7 +107,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function can_attach_a_tag_via_the_tags_mutator()
+    public function can_attach_a_tag_via_the_tags_mutator()
     {
         $this->testModel->tags = ['tag1'];
 
@@ -115,7 +115,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function can_attach_multiple_tags_via_the_tags_mutator()
+    public function can_attach_multiple_tags_via_the_tags_mutator()
     {
         $this->testModel->tags = ['tag1', 'tag2'];
 
@@ -123,7 +123,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function can_attach_multiple_tags()
+    public function can_attach_multiple_tags()
     {
         $this->testModel->attachTags(['test1', 'test2']);
 
@@ -131,7 +131,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function can_attach_a_existing_tag()
+    public function can_attach_a_existing_tag()
     {
         $this->testModel->attachTag(Tag::findOrCreate('test'));
 
@@ -139,7 +139,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function can_detach_a_tag()
+    public function can_detach_a_tag()
     {
         $this->testModel->attachTags(['test1', 'test2', 'test3']);
 
@@ -149,7 +149,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function can_detach_multiple_tags()
+    public function can_detach_multiple_tags()
     {
         $this->testModel->attachTags(['test1', 'test2', 'test3']);
 
@@ -159,7 +159,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function it_provides_a_scope_to_get_all_models_that_have_any_of_the_given_tags()
+    public function it_provides_a_scope_to_get_all_models_that_have_any_of_the_given_tags()
     {
         TestModel::create(['name' => 'model1'])->attachTag('tagA');
         TestModel::create(['name' => 'model2'])->attachTag('tagB');
@@ -171,7 +171,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function it_provides_a_scope_to_get_all_models_that_have_any_of_the_given_tag_instances()
+    public function it_provides_a_scope_to_get_all_models_that_have_any_of_the_given_tag_instances()
     {
         $tag = Tag::findOrCreate('tagA', 'typeA');
 
@@ -183,7 +183,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function can_sync_a_single_tag()
+    public function can_sync_a_single_tag()
     {
         $this->testModel->attachTags(['tag1', 'tag2', 'tag3']);
 
@@ -193,7 +193,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function can_sync_multiple_tags()
+    public function can_sync_multiple_tags()
     {
         $this->testModel->attachTags(['tag1', 'tag2', 'tag3']);
 
@@ -203,7 +203,7 @@ class TagTest extends TestCase
     }
 
     /** @test */
-    function can_attach_a_tag_inside_a_static_create_method()
+    public function can_attach_a_tag_inside_a_static_create_method()
     {
         $testModel = TestModel::create([
             'name' => 'testModel',

@@ -11,7 +11,7 @@ use Otinsoft\Toolkit\Validation\ReCaptchaValidator;
 class ServiceProviderTest extends TestCase
 {
     /** @test */
-    function can_register_validators()
+    public function can_register_validators()
     {
         $v = Validator::make([], []);
         $this->assertArrayHasKey(HashValidator::NAME, $v->extensions);
@@ -19,7 +19,7 @@ class ServiceProviderTest extends TestCase
     }
 
     /** @test */
-    function can_register_rules()
+    public function can_register_rules()
     {
         $this->assertTrue(Rule::hasMacro(RequiredIfRule::MACRO_NAME));
     }
